@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { LANDING } from "../../constants/routes";
+import * as AUTH from "../../actions/authActions";
+import { connect } from "react-redux";
+import { withAuthentication } from "../Session";
 
-export class SignOutButton extends Component {
+class SignOutBtn extends Component {
   onSignOutClick = e => {
-    console.log(e);
+    this.props.logout(this.props.firebase);
   };
 
   render() {
@@ -19,3 +22,7 @@ export class SignOutButton extends Component {
     );
   }
 }
+export const SignOutButton = connect(
+  null,
+  AUTH.mapDispatchToProps
+)(withAuthentication(SignOutBtn));

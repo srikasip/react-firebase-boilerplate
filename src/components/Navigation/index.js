@@ -6,6 +6,7 @@ import paths from "../../config/sitepaths";
 import { SignOutButton } from "../SignOut";
 import { SignInButton } from "../SignIn";
 import { SignUpLink } from "../SignUp";
+import { withAuthentication } from "../Session";
 
 class Navigation extends Component {
   componentDidMount() {
@@ -24,8 +25,11 @@ class Navigation extends Component {
               <i className="material-icons">menu</i>
             </a>
             <div className="links right hide-on-med-and-down">
-              <NavigationAuth linkClass="titleFont white-text" />
-              <NavigationNonAuth linkClass="titleFont white-text" />
+              {this.props.auth !== null ? (
+                <NavigationAuth linkClass="titleFont white-text" />
+              ) : (
+                <NavigationNonAuth linkClass="titleFont white-text" />
+              )}
             </div>
           </div>
         </nav>
@@ -36,8 +40,11 @@ class Navigation extends Component {
             this.sidenav = sidenav;
           }}
         >
-          <NavigationAuth linkClass="titleFont white-text" />
-          <NavigationNonAuth linkClass="titleFont white-text" />
+          {this.props.auth !== null ? (
+            <NavigationNonAuth linkClass="titleFont white-text" />
+          ) : (
+            <NavigationAuth linkClass="titleFont white-text" />
+          )}
         </div>
       </div>
     );
@@ -47,7 +54,7 @@ const NavigationAuth = ({ linkClass }) => (
   <ul>
     {paths.authenticated.map(path => {
       return (
-        <li>
+        <li key={path.displayText + "__NavLink"}>
           <Link className={linkClass} to={path.route}>
             {path.displayText}
           </Link>
@@ -64,7 +71,7 @@ const NavigationNonAuth = ({ linkClass }) => (
   <ul>
     {paths.non_authenticated.map(path => {
       return (
-        <li>
+        <li key={path.displayText + "__NavLink"}>
           <Link className={linkClass} to={path.route}>
             {path.displayText}
           </Link>
@@ -80,4 +87,4 @@ const NavigationNonAuth = ({ linkClass }) => (
   </ul>
 );
 
-export default Navigation;
+export default withAuthentication(Navigation);

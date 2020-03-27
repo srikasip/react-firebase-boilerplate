@@ -5,15 +5,33 @@ import { SignUpLink } from "../SignUp";
 import { PasswordForgetLink } from "../PasswordForget";
 import FormField from "../_Library/FormField";
 import "./signin.css";
+import * as AUTH from "../../actions/authActions";
+import { connect } from "react-redux";
+import { withAuthentication } from "../Session";
+import { HOME } from "../../constants/routes";
 
 class SignIn extends Component {
   state = {
     username: "",
     password: ""
   };
+  successful = () => {
+    this.props.history.push(HOME);
+  };
+  failure = error => {
+    console.log("Login failed:");
+    console.log(error);
+    this.setState({ username: "", password: "" });
+  };
   handleSubmit = e => {
     e.preventDefault();
-    console.log(this.state);
+    this.props.login(
+      this.state.username,
+      this.state.password,
+      this.props.firebase,
+      this.successful,
+      this.failure
+    );
   };
   handleChange = e => {
     this.setState({ [e.target.id]: e.target.value });
@@ -65,4 +83,7 @@ export const SignInButton = () => (
   </Link>
 );
 
-export default SignIn;
+export default connect(
+  null,
+  AUTH.mapDispatchToProps
+)(withAuthentication(SignIn));

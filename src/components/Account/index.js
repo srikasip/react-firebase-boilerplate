@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import SignUp from "../SignUp";
+// import SignUp from "../SignUp";
 import PasswordChange from "../PasswordChange";
 
 class Account extends Component {
@@ -8,7 +8,7 @@ class Account extends Component {
       <div>
         <section>
           <h5>Update Account Information</h5>
-          <SignUp />
+          {/* <SignUp />  */}
         </section>
         <hr />
         <section>
