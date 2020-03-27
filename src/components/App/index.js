@@ -10,6 +10,7 @@ import PasswordForget from "../PasswordForget";
 import Home from "../Home";
 import Account from "../Account";
 import Admin from "../Admin";
+import paths from "../../config/sitepaths";
 
 import { withAuthentication } from "../Session";
 
@@ -19,7 +20,6 @@ class App extends Component {
   };
 
   render() {
-    console.log(this);
     return (
       <div>
         <BrowserRouter>
