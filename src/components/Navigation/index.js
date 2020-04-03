@@ -19,7 +19,7 @@ class Navigation extends Component {
         <nav className="nav-wrapper grey darken-3 z-index-0">
           <div className="container">
             <Link to="/" className="brand-logo">
-              ReactApp
+              [INSERT PROJECT NAME HERE]
             </Link>
             <a href="#" data-target="mobileMenu" className="sidenav-trigger">
               <i className="material-icons">menu</i>
@@ -36,7 +36,7 @@ class Navigation extends Component {
         <div
           className="sidenav grey darken-3 white-text"
           id="mobileMenu"
-          ref={sidenav => {
+          ref={(sidenav) => {
             this.sidenav = sidenav;
           }}
         >
@@ -52,7 +52,7 @@ class Navigation extends Component {
 }
 const NavigationAuth = ({ linkClass }) => (
   <ul>
-    {paths.authenticated.map(path => {
+    {paths.authenticated.map((path) => {
       return (
         <li key={path.displayText + "__NavLink"}>
           <Link className={linkClass} to={path.route}>
@@ -69,7 +69,7 @@ const NavigationAuth = ({ linkClass }) => (
 
 const NavigationNonAuth = ({ linkClass }) => (
   <ul>
-    {paths.non_authenticated.map(path => {
+    {paths.non_authenticated.map((path) => {
       return (
         <li key={path.displayText + "__NavLink"}>
           <Link className={linkClass} to={path.route}>
