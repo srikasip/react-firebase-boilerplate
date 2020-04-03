@@ -1,3 +1,16 @@
+[TODOs]
+Okay. I have a lot to do to make this boilerplate awesome. but i think that stuff has to sit outside of the boilerplate. Here are the jobs:
+
+1. Make a project settings folder that sits inside the React project:
+
+   - Sitemap that will map to configs/sitepaths and other things
+   - Objects folder to capture the objects that we're using.
+   - firebaseSettings -- to be translated to the config firebaseConfig file.
+
+2. Develop a script that lives outside of the project that can translate ProjectSettings into code compolets and files assets.
+
+3. I dunno yet. I'll review this in a bit.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
